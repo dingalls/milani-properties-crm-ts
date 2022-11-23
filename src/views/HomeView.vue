@@ -1,18 +1,32 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
+  <div>
+    <h1 class="text-center">Champions DFW Commercial Realty CRM</h1>
+
+    <router-link to="/agents" tag="v-btn">
+      <v-btn>Agents</v-btn>
+    </router-link>
+
+    <br />
+
+    <crm-list />
+    <br />
+    <crm-input-form />
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
-import HelloWorld from "@/components/HelloWorld.vue"; // @ is an alias to /src
+import { defineComponent } from "vue";
 
-@Component({
+// Components
+import CrmInputForm from "../components/CrmInputForm.vue";
+import CrmList from "../components/CrmList.vue";
+
+export default defineComponent({
+  name: "HomeView",
+
   components: {
-    HelloWorld,
+    CrmInputForm,
+    CrmList,
   },
-})
-export default class HomeView extends Vue {}
+});
 </script>
