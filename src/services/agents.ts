@@ -1,5 +1,8 @@
 import { Agent } from "@/models/agent";
 import axios from "axios";
+import { config } from "dotenv";
+
+config();
 
 export async function getAgents(): Promise<any> {
   const response = await axios.get(`${process.env.API_URL}/api/agents`);

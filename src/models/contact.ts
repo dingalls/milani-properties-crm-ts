@@ -1,13 +1,13 @@
 export interface Contact {
-  _id: String,
-  publishedDate: String;
-  leadAssigned: String;
-  fullName: String;
-  phoneNumber: String;
-  emailAddress: String;
-  inquiredProperty: String;
-  timeline: String;
-  budget: String;
-  leadSource: String;
-  notes: String;
+  _id: string;
+  publishedDate: string;
+  leadAssigned: string;
+  fullName: string;
+  phoneNumber: string;
+  emailAddress: string;
+  inquiredProperty: string;
+  timeline: string;
+  budget: string;
+  leadSource: string;
+  notes: string;
 }

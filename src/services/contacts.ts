@@ -1,7 +1,7 @@
 import { Contact } from "@/models/contact";
 import axios from "axios";
+import { config } from "dotenv";
 
-const { config } = require("dotenv");
 config();
 
 export async function getContacts(): Promise<any> {
