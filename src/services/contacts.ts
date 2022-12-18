@@ -1,11 +1,10 @@
 import { Contact } from "@/models/contact";
 import axios from "axios";
-import { config } from "dotenv";
-
-config();
 
 export async function getContacts(): Promise<any> {
-  const response = await axios.get(`${process.env.API_URL}/api/contacts`);
+  const response = await axios.get(
+    "http://crmapi-env.eba-mjteec9h.us-west-2.elasticbeanstalk.com/api/contacts"
+  );
   return response.data;
 }
 
@@ -15,7 +14,7 @@ export async function saveContact(newContact: any): Promise<any> {
     "Content-Type": "application/json",
   };
   const response = await axios.post(
-    `${process.env.API_URL}/api/contact`,
+    "http://crmapi-env.eba-mjteec9h.us-west-2.elasticbeanstalk.com/api/contact",
     newContact,
     {
       headers,
@@ -27,7 +26,7 @@ export async function saveContact(newContact: any): Promise<any> {
 
 export async function getContact(contactId: string): Promise<any> {
   const response = await axios.get(
-    `${process.env.API_URL}/api/contact/${contactId}`
+    `http://crmapi-env.eba-mjteec9h.us-west-2.elasticbeanstalk.com/api/contact/${contactId}`
   );
   return response.data;
 }
@@ -39,7 +38,7 @@ export async function updateContact(contact: Contact): Promise<any> {
   };
 
   const response = await axios.put(
-    `${process.env.API_URL}/api/contact/${contact._id}`,
+    `http://crmapi-env.eba-mjteec9h.us-west-2.elasticbeanstalk.com/api/contact/${contact._id}`,
     contact,
     {
       headers,
@@ -51,7 +50,7 @@ export async function updateContact(contact: Contact): Promise<any> {
 
 export async function deleteContact(contactId: string): Promise<any> {
   const response = await axios.delete(
-    `${process.env.API_URL}/api/contact/${contactId}`
+    `http://crmapi-env.eba-mjteec9h.us-west-2.elasticbeanstalk.com/api/contact/${contactId}`
   );
   return response.data;
 }

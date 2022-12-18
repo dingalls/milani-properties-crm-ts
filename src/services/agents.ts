@@ -1,11 +1,10 @@
 import { Agent } from "@/models/agent";
 import axios from "axios";
-import { config } from "dotenv";
-
-config();
 
 export async function getAgents(): Promise<any> {
-  const response = await axios.get(`${process.env.API_URL}/api/agents`);
+  const response = await axios.get(
+    "http://crmapi-env.eba-mjteec9h.us-west-2.elasticbeanstalk.com/api/agents"
+  );
   return response.data;
 }
 
@@ -15,7 +14,7 @@ export async function saveAgent(newAgent: any): Promise<any> {
     "Content-Type": "application/json",
   };
   const response = await axios.post(
-    `${process.env.API_URL}/api/agent`,
+    "http://crmapi-env.eba-mjteec9h.us-west-2.elasticbeanstalk.com/api/agent",
     newAgent,
     {
       headers,
@@ -27,7 +26,7 @@ export async function saveAgent(newAgent: any): Promise<any> {
 
 export async function getAgent(agentId: string): Promise<any> {
   const response = await axios.get(
-    `${process.env.API_URL}/api/agent/${agentId}`
+    `http://crmapi-env.eba-mjteec9h.us-west-2.elasticbeanstalk.com/api/agent/${agentId}`
   );
   return response.data;
 }
@@ -39,7 +38,7 @@ export async function updateAgent(agent: Agent): Promise<any> {
   };
 
   const response = await axios.put(
-    `${process.env.API_URL}/api/agent/${agent._id}`,
+    `http://crmapi-env.eba-mjteec9h.us-west-2.elasticbeanstalk.com/api/agent/${agent._id}`,
     agent,
     {
       headers,
@@ -51,7 +50,7 @@ export async function updateAgent(agent: Agent): Promise<any> {
 
 export async function deleteAgent(agentId: string): Promise<any> {
   const response = await axios.delete(
-    `${process.env.API_URL}/api/agent/${agentId}`
+    `http://crmapi-env.eba-mjteec9h.us-west-2.elasticbeanstalk.com/api/agent/${agentId}`
   );
   return response.data;
 }
