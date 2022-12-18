@@ -2,8 +2,18 @@ import { Contact } from "@/models/contact";
 import axios from "axios";
 
 export async function getContacts(): Promise<any> {
+  const headers = {
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Headers": "Content-Type",
+    "Access-Control-Allow-Methods": "OPTIONS, POST, GET, PUT",
+    "Content-Type": "application/json",
+  };
+
   const response = await axios.get(
-    "http://crmapi-env.eba-mjteec9h.us-west-2.elasticbeanstalk.com/api/contacts"
+    "http://crmapi-env.eba-mjteec9h.us-west-2.elasticbeanstalk.com/api/contacts",
+    {
+      headers,
+    }
   );
   return response.data;
 }
