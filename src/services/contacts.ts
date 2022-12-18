@@ -1,6 +1,9 @@
 import { Contact } from "@/models/contact";
 import axios from "axios";
 
+const { config } = require("dotenv");
+config();
+
 export async function getContacts(): Promise<any> {
   const response = await axios.get(`${process.env.API_URL}/api/contacts`);
   return response.data;
@@ -35,7 +38,6 @@ export async function updateContact(contact: Contact): Promise<any> {
     "Content-Type": "application/json",
   };
 
-  console.log(contact._id);
   const response = await axios.put(
     `${process.env.API_URL}/api/contact/${contact._id}`,
     contact,
