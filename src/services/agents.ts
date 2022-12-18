@@ -2,7 +2,7 @@ import { Agent } from "@/models/agent";
 import axios from "axios";
 
 export async function getAgents(): Promise<any> {
-  const response = await axios.get("http://localhost:3000/api/agents");
+  const response = await axios.get(`${process.env.API_URL}/api/agents`);
   return response.data;
 }
 
@@ -12,7 +12,7 @@ export async function saveAgent(newAgent: any): Promise<any> {
     "Content-Type": "application/json",
   };
   const response = await axios.post(
-    "http://localhost:3000/api/agent",
+    `${process.env.API_URL}/api/agent`,
     newAgent,
     {
       headers,
@@ -24,7 +24,7 @@ export async function saveAgent(newAgent: any): Promise<any> {
 
 export async function getAgent(agentId: string): Promise<any> {
   const response = await axios.get(
-    `http://localhost:3000/api/agent/${agentId}`
+    `${process.env.API_URL}/api/agent/${agentId}`
   );
   return response.data;
 }
@@ -36,7 +36,7 @@ export async function updateAgent(agent: Agent): Promise<any> {
   };
 
   const response = await axios.put(
-    `http://localhost:3000/api/agent/${agent._id}`,
+    `${process.env.API_URL}/api/agent/${agent._id}`,
     agent,
     {
       headers,
@@ -48,7 +48,7 @@ export async function updateAgent(agent: Agent): Promise<any> {
 
 export async function deleteAgent(agentId: string): Promise<any> {
   const response = await axios.delete(
-    `http://localhost:3000/api/agent/${agentId}`
+    `${process.env.API_URL}/api/agent/${agentId}`
   );
   return response.data;
 }

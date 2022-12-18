@@ -2,7 +2,7 @@ import { Contact } from "@/models/contact";
 import axios from "axios";
 
 export async function getContacts(): Promise<any> {
-  const response = await axios.get("http://localhost:3000/api/contacts");
+  const response = await axios.get(`${process.env.API_URL}/api/contacts`);
   return response.data;
 }
 
@@ -12,7 +12,7 @@ export async function saveContact(newContact: any): Promise<any> {
     "Content-Type": "application/json",
   };
   const response = await axios.post(
-    "http://localhost:3000/api/contact",
+    `${process.env.API_URL}/api/contact`,
     newContact,
     {
       headers,
@@ -24,7 +24,7 @@ export async function saveContact(newContact: any): Promise<any> {
 
 export async function getContact(contactId: string): Promise<any> {
   const response = await axios.get(
-    `http://localhost:3000/api/contact/${contactId}`
+    `${process.env.API_URL}/api/contact/${contactId}`
   );
   return response.data;
 }
@@ -37,7 +37,7 @@ export async function updateContact(contact: Contact): Promise<any> {
 
   console.log(contact._id);
   const response = await axios.put(
-    `http://localhost:3000/api/contact/${contact._id}`,
+    `${process.env.API_URL}/api/contact/${contact._id}`,
     contact,
     {
       headers,
@@ -49,7 +49,7 @@ export async function updateContact(contact: Contact): Promise<any> {
 
 export async function deleteContact(contactId: string): Promise<any> {
   const response = await axios.delete(
-    `http://localhost:3000/api/contact/${contactId}`
+    `${process.env.API_URL}/api/contact/${contactId}`
   );
   return response.data;
 }
